@@ -46,7 +46,7 @@
     padding: 0 5vw;
   }
 
-  /* Logo */
+  /* FIX 1: Unified logo class with flex + image support */
   .logo {
     font-family: 'DM Serif Display', serif;
     font-size: 1.35rem;
@@ -58,12 +58,15 @@
     gap: 0.75rem;
   }
   .logo span { color: var(--blue); }
-  .logo-icon {
-    width: 44px;
-    height: 44px;
-    flex-shrink: 0;
-    display: block;
-  }
+  .logo-img {
+  width: 58px;
+  height: 58px;
+  object-fit: contain;
+  display: block;
+  border-radius: 50%;
+  background: var(--ice);
+  padding: 4px;
+}
 
   .nav-links { display: flex; gap: 2rem; list-style: none; }
   .nav-links a {
@@ -187,13 +190,11 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    padding-top: 1.5rem;
   }
   .hero-card {
     background: var(--white);
     border-radius: 28px;
     padding: 2.5rem 2rem;
-    padding-top: 3rem;
     width: 100%;
     max-width: 380px;
     box-shadow:
@@ -201,7 +202,6 @@
       0 8px 32px rgba(26,86,168,0.12),
       0 32px 80px rgba(26,86,168,0.08);
     position: relative;
-    margin-top: 2.5rem;
     animation: floatCard 4s ease-in-out infinite;
   }
   @keyframes floatCard {
@@ -250,11 +250,11 @@
   .card-btn:hover { background: var(--navy); }
   .badge-float {
     position: absolute;
-    top: 14px; right: 16px;
+    top: -18px; right: -18px;
     background: var(--gold);
     color: #7a4800;
     border-radius: 12px;
-    padding: 0.45rem 0.85rem;
+    padding: 0.55rem 0.9rem;
     font-size: 0.78rem;
     font-weight: 500;
     box-shadow: 0 4px 12px rgba(245,166,35,0.3);
@@ -633,8 +633,9 @@
     .hero-btns { justify-content: center; }
     .hero-stats { justify-content: center; }
     .hero-visual { display: none; }
+    /* FIX 4: Mobile logo sizing */
     .logo { font-size: 1.1rem; gap: 0.5rem; }
-    .logo-icon { width: 36px; height: 36px; }
+    .logo-img { width: 32px; height: 32px; }
     #doctor { grid-template-columns: 1fr; }
     .doctor-photo-wrap { display: block; }
     .appt-grid { grid-template-columns: 1fr; }
@@ -651,14 +652,7 @@
 <!-- FIX 1: Use single unified .logo class (removed .logo2) -->
 <nav>
   <a href="#home" class="logo">
-    <svg class="logo-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M6 18Q6 5 14 5Q18.5 5 20.5 9Q22 12.5 22 12.5Q22 12.5 23.5 9Q25.5 5 30 5Q38 5 38 18Q38 30 35 37Q33 42 30 42Q27 42 25.5 37.5Q24 33 22 33Q20 33 18.5 37.5Q17 42 14 42Q11 42 9 37Q6 30 6 18Z" fill="#0D3F75"/>
-      <polygon points="22,4 5,19 39,19" fill="#0FA89E"/>
-      <rect x="29" y="8" width="4" height="8" rx="1.5" fill="#0B8A81"/>
-      <rect x="18.5" y="27" width="7" height="10" rx="3.5" fill="white" opacity="0.92"/>
-      <circle cx="12" cy="24" r="3" fill="white" opacity="0.75"/>
-      <circle cx="32" cy="24" r="3" fill="white" opacity="0.75"/>
-    </svg>
+    <img src="image/house2.png" alt="House Of Teeth" class="logo-img">
     House<span>Of</span>Teeth
   </a>
   <ul class="nav-links">
@@ -1021,44 +1015,10 @@
   const CLINIC_EMAIL         = 'houseofteeth888@gmail.com';
   const APPS_SCRIPT_URL      = "https://script.google.com/macros/s/AKfycbz6eLx-LY0fAaZ6mKf6mnXSq9S42vsOvg9qZ6HkHulOaXOTyK2uBmxLPOAIdJY6ncWq/exec";
 
-  // ── WHATSAPP CONFIG (CallMeBot — free API) ──────────────────────────────
-  // SETUP STEPS (one-time, takes 2 minutes):
-  // 1. Save +34 644 60 09 57 as a contact in the CLINIC WhatsApp
-  // 2. Send this message to that contact: "I allow callmebot to send me messages"
-  // 3. You'll receive an API key back — paste it below as CALLMEBOT_API_KEY
-  // Docs: https://www.callmebot.com/blog/free-api-whatsapp-messages/
-  const CLINIC_WHATSAPP      = '918105189978';   // clinic number with country code, no +
-  const CALLMEBOT_API_KEY    = 'YOUR_API_KEY';   // ← replace after setup
-
   const ALL_FORM_SLOTS = ["10:00 AM", "11:00 AM", "12:00 PM", "2:00 PM", "4:00 PM", "5:00 PM", "6:00 PM"];
   const HERO_SLOTS     = ["10:00 AM", "11:00 AM", "12:00 PM", "2:00 PM", "4:00 PM", "5:00 PM", "6:00 PM"];
 
   emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
-
-  // ── WHATSAPP NOTIFICATION via CallMeBot ─────────────────────────────────
-  async function sendWhatsAppNotification(fullName, phone, service, formattedDate, time, notes) {
-    if (CALLMEBOT_API_KEY === 'YOUR_API_KEY') {
-      console.warn('WhatsApp: CallMeBot API key not set. Skipping.');
-      return;
-    }
-    const msg =
-      `🦷 *New Appointment - House Of Teeth*\n\n` +
-      `👤 *Patient:* ${fullName}\n` +
-      `📞 *Phone:* ${phone}\n` +
-      `🩺 *Service:* ${service}\n` +
-      `📅 *Date:* ${formattedDate}\n` +
-      `🕐 *Time:* ${time}\n` +
-      `📝 *Notes:* ${notes || 'None'}\n\n` +
-      `⚡ Submitted at ${new Date().toLocaleTimeString('en-IN', { timeZone: 'Asia/Kolkata' })}`;
-
-    const url = `https://api.callmebot.com/whatsapp.php?phone=${CLINIC_WHATSAPP}&text=${encodeURIComponent(msg)}&apikey=${CALLMEBOT_API_KEY}`;
-    try {
-      await fetch(url, { mode: 'no-cors' });
-      console.log('WhatsApp notification sent.');
-    } catch (err) {
-      console.warn('WhatsApp notification failed (non-critical):', err);
-    }
-  }
 
   // FIX 5: All DOM-dependent setup inside DOMContentLoaded
   document.addEventListener('DOMContentLoaded', () => {
@@ -1252,12 +1212,11 @@
         body: JSON.stringify({ date, time, fname, lname, phone, service, notes })
       });
 
-      // ── Email + WhatsApp fire together (both non-critical) ──
-      await Promise.allSettled([
-        emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
-          .catch(e => console.warn('EmailJS failed (non-critical):', e)),
-        sendWhatsAppNotification(fullName, phone, service, formattedDate, time, notes)
-      ]);
+      try {
+        await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams);
+      } catch (emailErr) {
+        console.warn('EmailJS notification failed (non-critical):', emailErr);
+      }
 
       const today = new Date().toISOString().split('T')[0];
       if (date === today) loadTodaySlots();
