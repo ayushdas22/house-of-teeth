@@ -244,6 +244,8 @@
     font-weight: 500;
     box-shadow: 0 4px 12px rgba(245,166,35,0.3);
     white-space: nowrap;
+    transition: opacity 0.3s ease;
+    opacity: 1;
   }
 
   /* ── SECTION COMMONS ── */
@@ -761,7 +763,7 @@
         <div class="stat-label">Happy Patients</div>
       </div>
       <div>
-        <div class="stat-num">10+</div>
+        <div class="stat-num">7+</div>
         <div class="stat-label">Years Experience</div>
       </div>
       <div>
@@ -773,17 +775,15 @@
 
   <div class="hero-visual">
     <div class="hero-card">
-      <div class="badge-float">⚡ Next slot: Today 4 PM</div>
+      <div class="badge-float" id="dynamic-badge">⚡ Slots filling fast!</div>
       <div class="card-tooth">🦷</div>
       <div class="card-title">Book Your Visit</div>
       <div class="card-sub">Choose a convenient slot</div>
-      <div class="card-slots">
-        <div class="slot"><span class="slot-time">10:00 AM</span><span class="slot-taken">Booked</span></div>
-        <div class="slot"><span class="slot-time">12:00 PM</span><span class="slot-taken">Booked</span></div>
-        <div class="slot" style="background:#f0fdf4;"><span class="slot-time">4:00 PM</span><span class="slot-avail">● Available</span></div>
-        <div class="slot" style="background:#f0fdf4;"><span class="slot-time">6:00 PM</span><span class="slot-avail">● Available</span></div>
+      <!-- DYNAMIC SLOTS CONTAINER -->
+      <div class="card-slots" id="dynamic-slots">
+        <div style="text-align:center; font-size: 0.8rem; color: var(--muted);">Loading appointments...</div>
       </div>
-      <button class="card-btn" onclick="document.getElementById('appointment').scrollIntoView({behavior:'smooth'})">Reserve a Slot →</button>
+      <button class="card-btn" onclick="document.getElementById('appointment').scrollIntoView({behavior:'smooth'})">Book Appointment →</button>
     </div>
   </div>
 </section>
@@ -859,11 +859,11 @@
       With over a decade of practice, Dr. Chandani brings together clinical precision and a compassionate approach to make every patient feel at ease. Trained at a premier dental institution and with a specialisation in Prosthodontics, the focus has always been on long-lasting, aesthetically excellent outcomes.
     </p>
     <ul class="quals">
-      <li>BDS – Dr. DY Patil Vidyapeeth</li>
+      <li>BDS – Dr. DY Patil Vidyapeet</li>
       <li>MDS – Prosthodontics & Crown & Bridge</li>
       <li>Member, Indian Dental Association (IDA)</li>
-      <li>10+ years of clinical experience in Bengaluru</li>
-      <li>Expert in RCT's ,veneers and smile designing</li>
+      <li>7+ years of clinical experience in Bengaluru</li>
+      <li>Expert in RCT's, veneers and smile designing</li>
     </ul>
   </div>
 </section>
@@ -898,7 +898,7 @@
     </div>
     <div class="review-card">
       <div class="stars">★★★★★</div>
-      <p class="review-text">"My daughter was terrified of the dentist. Dr. [Name] was so patient and gentle — she actually looks forward to her appointments now. Highly recommend for families."</p>
+      <p class="review-text">"My daughter was terrified of the dentist. Dr. Chandani was so patient and gentle — she actually looks forward to her appointments now. Highly recommend for families."</p>
       <div class="reviewer">
         <div class="reviewer-avatar">SM</div>
         <div>
@@ -999,15 +999,9 @@
         </div>
         <div class="field">
           <label>Preferred Time</label>
-          <select id="appt-time">
-            <option value="">Select…</option>
-            <option>10:00 AM</option>
-            <option>11:00 AM</option>
-            <option>12:00 PM</option>
-            <option>2:00 PM</option>
-            <option>4:00 PM</option>
-            <option>5:00 PM</option>
-            <option>6:00 PM</option>
+          <!-- DYNAMIC TIME DROPDOWN -->
+          <select id="appt-time" disabled>
+            <option value="">Please select a date first…</option>
           </select>
         </div>
       </div>
@@ -1066,8 +1060,6 @@
       </div>
     </div>
     <div class="map-embed">
-      <!-- Replace the src below with your actual Google Maps embed URL -->
-      <!-- To get it: maps.google.com → search your clinic → Share → Embed a map → copy the src URL -->
       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3889.3550703829924!2d77.64038821170878!3d12.88487498737011!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4d08f5a1da6d364f%3A0x78fb3e2cc4b92bb4!2sHouse%20of%20Teeth%20-%20The%20Dental%20Clinic!5e0!3m2!1sen!2sin!4v1780125661915!5m2!1sen!2sin" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
   </div>
@@ -1094,13 +1086,19 @@
 
 <script>
   // ─────────────────────────────────────────────────────────────
-  //  EMAILJS CONFIGURATION — fill these in after signing up at
-  //  https://www.emailjs.com  (free plan: 200 emails/month)
+  //  CONFIGURATION 
   // ─────────────────────────────────────────────────────────────
-  const EMAILJS_PUBLIC_KEY   = 'YOUR_PUBLIC_KEY';      // Account → API Keys
-  const EMAILJS_SERVICE_ID   = 'YOUR_SERVICE_ID';      // Email Services → Service ID
-  const EMAILJS_TEMPLATE_ID  = 'YOUR_TEMPLATE_ID';     // Email Templates → Template ID
-  const CLINIC_EMAIL         = 'hello@houseofteeth.in';// ← your notification email
+  const EMAILJS_PUBLIC_KEY   = 'QQtMe5PJiSgeA50vn';      // EmailJS Public Key
+  const EMAILJS_SERVICE_ID   = 'service_cpux0di';      // EmailJS Service ID
+  const EMAILJS_TEMPLATE_ID  = 'template_ww58btb';     // EmailJS Template ID
+  const CLINIC_EMAIL         = 'houseofteeth888@gmail.com';
+  
+  // REPLACE THIS WITH YOUR DEPLOYED GOOGLE APPS SCRIPT WEB APP URL
+  const APPS_SCRIPT_URL      = "https://script.google.com/macros/s/AKfycbz6eLx-LY0fAaZ6mKf6mnXSq9S42vsOvg9qZ6HkHulOaXOTyK2uBmxLPOAIdJY6ncWq/exec"; 
+
+  // Master lists of slots
+  const ALL_FORM_SLOTS = ["10:00 AM", "11:00 AM", "12:00 PM", "2:00 PM", "4:00 PM", "5:00 PM", "6:00 PM"];
+  const HERO_SLOTS     = ["10:00 AM", "11:00 AM", "12:00 PM", "2:00 PM", "4:00 PM", "5:00 PM", "6:00 PM"]; // Subset to display nicely in the hero card
 
   emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
 
@@ -1109,6 +1107,116 @@
   if (dateInput) {
     dateInput.min = new Date().toISOString().split('T')[0];
   }
+
+  // ─────────────────────────────────────────────────────────────
+  //  API INTEGRATION: LOAD HERO SLOTS ON PAGE LOAD
+  // ─────────────────────────────────────────────────────────────
+  async function loadTodaySlots() {
+    const today = new Date().toISOString().split('T')[0];
+    const slotsContainer = document.getElementById('dynamic-slots');
+    
+    try {
+      const response = await fetch(`${APPS_SCRIPT_URL}?date=${today}`);
+      const data = await response.json();
+      renderHeroSlots(data.booked || []);
+    } catch (error) {
+      console.error("Error fetching slots:", error);
+      slotsContainer.innerHTML = `<div style="font-size:0.8rem; color:#ef4444; text-align:center;">Failed to load schedule.</div>`;
+    }
+  }
+
+  function renderHeroSlots(bookedTimes) {
+    const slotsContainer = document.getElementById('dynamic-slots');
+    slotsContainer.innerHTML = ''; 
+
+    HERO_SLOTS.forEach(slotTime => {
+      const isBooked = bookedTimes.includes(slotTime);
+      if (isBooked) {
+        slotsContainer.innerHTML += `
+          <div class="slot">
+            <span class="slot-time">${slotTime}</span>
+            <span class="slot-taken">Booked</span>
+          </div>`;
+      } else {
+        slotsContainer.innerHTML += `
+          <div class="slot" style="background:#f0fdf4;">
+            <span class="slot-time">${slotTime}</span>
+            <span class="slot-avail">● Available</span>
+          </div>`;
+      }
+    });
+  }
+
+  // Load today's slots as soon as the DOM is ready
+  document.addEventListener('DOMContentLoaded', loadTodaySlots);
+
+  // ─────────────────────────────────────────────────────────────
+  //  DYNAMIC BADGE ROTATION
+  // ─────────────────────────────────────────────────────────────
+  const badgeMessages = [
+    '⚡ Slots filling fast!',
+    '✨ Limited availability',
+    '🎯 Book your appointments'
+  ];
+
+  let badgeIndex = 0;
+  const badgeEl = document.getElementById('dynamic-badge');
+
+  function rotateBadge() {
+    if (badgeEl) {
+      badgeEl.style.opacity = '0.6';
+      setTimeout(() => {
+        badgeIndex = (badgeIndex + 1) % badgeMessages.length;
+        badgeEl.textContent = badgeMessages[badgeIndex];
+        badgeEl.style.opacity = '1';
+      }, 300);
+    }
+  }
+
+  // Rotate badge every 4 seconds
+  setInterval(rotateBadge, 4000);
+
+  // ─────────────────────────────────────────────────────────────
+  //  API INTEGRATION: DYNAMIC FORM DROPDOWN ON DATE CHANGE
+  // ─────────────────────────────────────────────────────────────
+  const formTimeSelect = document.getElementById('appt-time');
+
+  dateInput.addEventListener('change', async (e) => {
+    const selectedDate = e.target.value; 
+    
+    if (!selectedDate) {
+      formTimeSelect.innerHTML = '<option value="">Please select a date first…</option>';
+      formTimeSelect.disabled = true;
+      return;
+    }
+
+    formTimeSelect.innerHTML = '<option value="">Checking availability...</option>';
+    formTimeSelect.disabled = true;
+
+    try {
+      const response = await fetch(`${APPS_SCRIPT_URL}?date=${selectedDate}`);
+      const data = await response.json();
+      const bookedTimes = data.booked || [];
+
+      // Filter out times that are already booked
+      const availableSlots = ALL_FORM_SLOTS.filter(slot => !bookedTimes.includes(slot));
+
+      if (availableSlots.length === 0) {
+        formTimeSelect.innerHTML = '<option value="">Fully booked for this date</option>';
+        formTimeSelect.disabled = true; 
+      } else {
+        formTimeSelect.innerHTML = '<option value="">Select an available time…</option>';
+        availableSlots.forEach(slot => {
+          formTimeSelect.innerHTML += `<option value="${slot}">${slot}</option>`;
+        });
+        formTimeSelect.disabled = false; 
+      }
+    } catch (error) {
+      console.error("Error fetching slots:", error);
+      formTimeSelect.innerHTML = '<option value="">Error loading slots. Please refresh.</option>';
+    }
+  });
+
 
   // ── Form validation helpers ──
   function showFieldError(id, msg) {
@@ -1133,7 +1241,9 @@
 
   function validatePhone(p) { return /^[+\d\s\-()]{7,15}$/.test(p); }
 
-  // ── Main submit function ──
+  // ─────────────────────────────────────────────────────────────
+  //  SUBMIT FORM LOGIC
+  // ─────────────────────────────────────────────────────────────
   async function submitForm() {
     clearFieldErrors();
 
@@ -1147,12 +1257,12 @@
 
     // Validation
     let valid = true;
-    if (!fname)              { showFieldError('fname',    'First name is required.');       valid = false; }
-    if (!phone)              { showFieldError('phone',    'Phone number is required.');     valid = false; }
-    else if (!validatePhone(phone)) { showFieldError('phone', 'Enter a valid phone number.'); valid = false; }
-    if (!service)            { showFieldError('service',  'Please select a service.');      valid = false; }
-    if (!date)               { showFieldError('appt-date','Please choose a date.');         valid = false; }
-    if (!time)               { showFieldError('appt-time','Please choose a time.');         valid = false; }
+    if (!fname)                     { showFieldError('fname',    'First name is required.');       valid = false; }
+    if (!phone)                     { showFieldError('phone',    'Phone number is required.');     valid = false; }
+    else if (!validatePhone(phone)) { showFieldError('phone',    'Enter a valid phone number.');   valid = false; }
+    if (!service)                   { showFieldError('service',  'Please select a service.');      valid = false; }
+    if (!date)                      { showFieldError('appt-date','Please choose a date.');         valid = false; }
+    if (!time)                      { showFieldError('appt-time','Please choose a time.');         valid = false; }
     if (!valid) return;
 
     const btn = document.querySelector('.submit-btn');
@@ -1163,7 +1273,6 @@
     const sentAt      = new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' });
     const formattedDate = new Date(date).toLocaleDateString('en-IN', { weekday:'long', year:'numeric', month:'long', day:'numeric' });
 
-    // Template variables — these must match your EmailJS template placeholders
     const templateParams = {
       to_email:      CLINIC_EMAIL,
       patient_name:  fullName,
@@ -1173,21 +1282,56 @@
       appt_time:     time,
       notes:         notes || 'None',
       submitted_at:  sentAt,
-      reply_to:      phone,   // EmailJS reply-to field
+      reply_to:      phone,
     };
 
     try {
-      await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams);
-      // Success state
+      // ── Step 1: Save to Google Sheets (primary — must succeed) ──────────
+      await fetch(APPS_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain' },
+        body: JSON.stringify({
+          date: date,
+          time: time,
+          fname: fname,
+          lname: lname,
+          phone: phone,
+          service: service,
+          notes: notes
+        })
+      });
+ 
+      // ── Step 2: Send email notification (secondary — failure is silent) ─
+      try {
+        await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams);
+      } catch (emailErr) {
+        // Email failed — log for debugging but do NOT block the user flow.
+        // The appointment is already saved to Google Sheets above.
+        console.warn('EmailJS notification failed (non-critical):', emailErr);
+      }
+ 
+      // ── Step 3: Refresh hero slots if booking is for today ──────────────
+      const today = new Date().toISOString().split('T')[0];
+      if (date === today) {
+        loadTodaySlots();
+      }
+
+      // Success UI Changes
       btn.textContent = 'Request Sent ✓';
       btn.style.background = '#22c55e';
       document.getElementById('success-msg').style.display = 'block';
       document.getElementById('success-msg').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-      // Clear form fields
+      
+      // Clear form inputs
       ['fname','lname','phone','notes'].forEach(id => document.getElementById(id).value = '');
       ['service','appt-date','appt-time'].forEach(id => document.getElementById(id).value = '');
+      
+      // Lock dropdown back down since the date was cleared
+      formTimeSelect.innerHTML = '<option value="">Please select a date first…</option>';
+      formTimeSelect.disabled = true;
+
     } catch (err) {
-      // Error state — show inline message, re-enable button
       btn.disabled = false;
       btn.textContent = 'Request Appointment →';
       const errBox = document.getElementById('success-msg');
@@ -1195,7 +1339,7 @@
       errBox.style.background = '#fef2f2';
       errBox.style.color = '#991b1b';
       errBox.textContent = '⚠️ Something went wrong. Please call us directly at +91 8105189978.';
-      console.error('EmailJS error:', err);
+      console.error('API Error:', err);
     }
   }
 
