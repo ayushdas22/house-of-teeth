@@ -1,0 +1,1222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>House Of Teeth – Dental Clinic</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy:   #0B1F3A;
+    --blue:   #1A56A8;
+    --sky:    #3B82C4;
+    --ice:    #E8F2FC;
+    --white:  #FFFFFF;
+    --gray:   #F4F7FB;
+    --muted:  #6B7C93;
+    --text:   #0E1E33;
+    --accent: #D4EDFF;
+    --gold:   #F5A623;
+    --radius: 14px;
+    --nav-h:  72px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--white);
+    color: var(--text);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    height: var(--nav-h);
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(11,31,58,0.08);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 5vw;
+  }
+  .logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.35rem;
+    color: var(--navy);
+    letter-spacing: -0.01em;
+    text-decoration: none;
+  }
+  .logo span { color: var(--blue); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: var(--muted);
+    transition: color 0.2s;
+    letter-spacing: 0.01em;
+  }
+  .nav-links a:hover { color: var(--navy); }
+  .nav-cta {
+    background: var(--blue);
+    color: var(--white) !important;
+    padding: 0.5rem 1.25rem;
+    border-radius: 100px;
+    font-weight: 500 !important;
+    transition: background 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--navy) !important; color: var(--white) !important; }
+
+  /* ── HERO ── */
+  #home {
+    min-height: 100vh;
+    padding-top: var(--nav-h);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 4rem;
+    padding-left: 8vw;
+    padding-right: 5vw;
+    background:
+      radial-gradient(ellipse 70% 60% at 90% 50%, #D4EDFF 0%, transparent 70%),
+      var(--white);
+  }
+  .hero-label {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: var(--accent);
+    color: var(--blue);
+    font-size: 0.78rem;
+    font-weight: 500;
+    padding: 0.35rem 0.9rem;
+    border-radius: 100px;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .hero-label::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--blue);
+    border-radius: 50%;
+  }
+  h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.6rem, 5vw, 4rem);
+    line-height: 1.1;
+    color: var(--navy);
+    margin-bottom: 1.25rem;
+    letter-spacing: -0.02em;
+  }
+  h1 em {
+    font-style: italic;
+    color: var(--blue);
+  }
+  .hero-sub {
+    font-size: 1.05rem;
+    color: var(--muted);
+    max-width: 440px;
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+    line-height: 1.7;
+  }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--blue);
+    color: var(--white);
+    padding: 0.85rem 2rem;
+    border-radius: 100px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--navy); transform: translateY(-1px); }
+  .btn-outline {
+    background: transparent;
+    color: var(--navy);
+    padding: 0.85rem 2rem;
+    border-radius: 100px;
+    font-size: 0.95rem;
+    font-weight: 400;
+    text-decoration: none;
+    border: 1.5px solid rgba(11,31,58,0.2);
+    transition: border-color 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+  .btn-outline:hover { border-color: var(--blue); color: var(--blue); transform: translateY(-1px); }
+
+  .hero-stats {
+    display: flex; gap: 2.5rem;
+    margin-top: 3rem;
+  }
+  .stat-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2rem;
+    color: var(--navy);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-top: 0.25rem;
+    font-weight: 300;
+  }
+
+  /* Hero visual card */
+  .hero-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+  .hero-card {
+    background: var(--white);
+    border-radius: 28px;
+    padding: 2.5rem 2rem;
+    width: 100%;
+    max-width: 380px;
+    box-shadow:
+      0 1px 2px rgba(11,31,58,0.04),
+      0 8px 32px rgba(26,86,168,0.12),
+      0 32px 80px rgba(26,86,168,0.08);
+    position: relative;
+    animation: floatCard 4s ease-in-out infinite;
+  }
+  @keyframes floatCard {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-8px); }
+  }
+  .card-tooth {
+    width: 72px; height: 72px;
+    background: var(--ice);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2rem;
+    margin-bottom: 1.25rem;
+  }
+  .card-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.2rem;
+    color: var(--navy);
+    margin-bottom: 0.3rem;
+  }
+  .card-sub { font-size: 0.83rem; color: var(--muted); margin-bottom: 1.5rem; }
+  .card-slots { display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 1.5rem; }
+  .slot {
+    display: flex; align-items: center; justify-content: space-between;
+    background: var(--gray);
+    border-radius: 10px;
+    padding: 0.65rem 1rem;
+    font-size: 0.82rem;
+  }
+  .slot-time { color: var(--navy); font-weight: 500; }
+  .slot-avail { color: #22c55e; font-size: 0.75rem; font-weight: 500; }
+  .slot-taken { color: var(--muted); font-size: 0.75rem; }
+  .card-btn {
+    width: 100%;
+    background: var(--blue);
+    color: var(--white);
+    border: none;
+    border-radius: 10px;
+    padding: 0.85rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    transition: background 0.2s;
+  }
+  .card-btn:hover { background: var(--navy); }
+  .badge-float {
+    position: absolute;
+    top: -18px; right: -18px;
+    background: var(--gold);
+    color: #7a4800;
+    border-radius: 12px;
+    padding: 0.55rem 0.9rem;
+    font-size: 0.78rem;
+    font-weight: 500;
+    box-shadow: 0 4px 12px rgba(245,166,35,0.3);
+    white-space: nowrap;
+  }
+
+  /* ── SECTION COMMONS ── */
+  section { padding: 6rem 8vw; }
+  .section-label {
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--blue);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.75rem;
+  }
+  h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    color: var(--navy);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+  }
+  .section-intro {
+    font-size: 1rem;
+    color: var(--muted);
+    max-width: 520px;
+    font-weight: 300;
+    line-height: 1.7;
+    margin-bottom: 3.5rem;
+  }
+
+  /* ── SERVICES ── */
+  #services { background: var(--gray); }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+  }
+  .service-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 2rem;
+    border: 1px solid rgba(11,31,58,0.06);
+    transition: box-shadow 0.25s, transform 0.2s;
+    cursor: default;
+  }
+  .service-card:hover {
+    box-shadow: 0 8px 32px rgba(26,86,168,0.12);
+    transform: translateY(-3px);
+  }
+  .service-icon {
+    width: 52px; height: 52px;
+    background: var(--ice);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem;
+    margin-bottom: 1.25rem;
+  }
+  .service-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.1rem;
+    color: var(--navy);
+    margin-bottom: 0.5rem;
+  }
+  .service-desc { font-size: 0.88rem; color: var(--muted); line-height: 1.65; }
+
+  /* ── DOCTOR ── */
+  #doctor {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 5rem;
+  }
+  .doctor-photo-wrap {
+    position: relative;
+  }
+  .doctor-photo {
+    width: min(100%, 420px);
+    aspect-ratio: 1 / 1;
+    background: linear-gradient(145deg, #C9DFF7, #E8F2FC);
+    border-radius: 28px;
+    display: flex; align-items: flex-end; justify-content: center;
+    font-size: 7rem;
+    overflow: hidden;
+    position: relative;
+  }
+  .doctor-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .doctor-photo::after {
+    content: '🦷';
+    position: absolute;
+    top: 1.5rem; right: 1.5rem;
+    font-size: 1.5rem;
+    opacity: 0.4;
+  }
+  .doctor-badge {
+    position: absolute;
+    bottom: -1rem; left: -1rem;
+    background: var(--white);
+    border-radius: 14px;
+    padding: 1rem 1.25rem;
+    box-shadow: 0 4px 24px rgba(11,31,58,0.12);
+    font-size: 0.82rem;
+  }
+  .doctor-badge strong { display: block; color: var(--navy); font-size: 1rem; font-weight: 500; }
+  .doctor-badge span { color: var(--muted); }
+
+  .doctor-content h2 { margin-bottom: 0.5rem; }
+  .doctor-role {
+    font-size: 0.95rem;
+    color: var(--blue);
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+  }
+  .doctor-bio {
+    font-size: 0.95rem;
+    color: var(--muted);
+    line-height: 1.75;
+    margin-bottom: 2rem;
+    font-weight: 300;
+  }
+  .quals { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+  .quals li {
+    display: flex; align-items: center; gap: 0.75rem;
+    font-size: 0.88rem;
+    color: var(--text);
+  }
+  .quals li::before {
+    content: '';
+    width: 20px; height: 20px;
+    background: var(--ice);
+    border-radius: 50%;
+    flex-shrink: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 6l2.5 2.5L10 3' stroke='%231A56A8' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  /* ── REVIEWS ── */
+  #reviews { background: var(--navy); }
+  #reviews .section-label { color: #7EB8F7; }
+  #reviews h2 { color: var(--white); }
+  #reviews .section-intro { color: rgba(255,255,255,0.55); }
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.25rem;
+  }
+  .review-card {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: var(--radius);
+    padding: 1.75rem;
+  }
+  .stars { color: var(--gold); font-size: 0.85rem; letter-spacing: 0.05em; margin-bottom: 0.85rem; }
+  .review-text {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.8);
+    line-height: 1.7;
+    margin-bottom: 1.25rem;
+    font-style: italic;
+    font-weight: 300;
+  }
+  .reviewer { display: flex; align-items: center; gap: 0.75rem; }
+  .reviewer-avatar {
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    background: var(--sky);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 500;
+    font-size: 0.85rem;
+    color: var(--white);
+    flex-shrink: 0;
+  }
+  .reviewer-name { font-size: 0.88rem; font-weight: 500; color: var(--white); }
+  .reviewer-via { font-size: 0.75rem; color: rgba(255,255,255,0.4); }
+  .google-badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(255,255,255,0.1);
+    border-radius: 100px;
+    padding: 0.6rem 1.25rem;
+    color: rgba(255,255,255,0.7);
+    font-size: 0.82rem;
+    margin-top: 2.5rem;
+    cursor: pointer;
+    transition: background 0.2s;
+    text-decoration: none;
+    border: 1px solid rgba(255,255,255,0.15);
+  }
+  .google-badge:hover { background: rgba(255,255,255,0.15); }
+
+  /* ── REVIEW SUBMISSION ── */
+  #review-form-section {
+    background: linear-gradient(135deg, rgba(232,242,252,0.5), rgba(212,237,255,0.3));
+    border-radius: 20px;
+    padding: 3rem 2rem;
+    margin: 3rem 0 0;
+  }
+  .review-form-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.4rem;
+    color: var(--navy);
+    margin-bottom: 0.5rem;
+    text-align: center;
+  }
+  .review-form-subtitle {
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+  }
+  .review-input-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  .review-input-group.full { grid-template-columns: 1fr; }
+  .review-form-field {
+    display: flex;
+    flex-direction: column;
+  }
+  .review-form-field label {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--navy);
+    margin-bottom: 0.4rem;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+  .review-form-field input,
+  .review-form-field textarea,
+  .review-form-field select {
+    background: var(--white);
+    border: 1.5px solid rgba(11,31,58,0.1);
+    border-radius: 10px;
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+    font-family: 'DM Sans', sans-serif;
+    color: var(--text);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .review-form-field input:focus,
+  .review-form-field textarea:focus,
+  .review-form-field select:focus {
+    border-color: var(--blue);
+  }
+  .review-form-field textarea { resize: vertical; min-height: 100px; }
+  .star-rating {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  .star-btn {
+    font-size: 2rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s;
+    color: #d1d5db;
+  }
+  .star-btn:hover,
+  .star-btn.active { color: var(--gold); transform: scale(1.2); }
+  .review-submit-btn {
+    width: 100%;
+    background: var(--blue);
+    color: var(--white);
+    border: none;
+    border-radius: 100px;
+    padding: 1rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    font-family: 'DM Sans', sans-serif;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    margin-top: 1rem;
+  }
+  .review-submit-btn:hover { background: var(--navy); transform: translateY(-1px); }
+  .review-success-msg {
+    display: none;
+    text-align: center;
+    padding: 1.5rem;
+    background: #e8f8f0;
+    border-radius: 12px;
+    color: #166534;
+    font-weight: 500;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+  }
+
+  /* ── APPOINTMENT ── */
+  #appointment {
+    background:
+      radial-gradient(ellipse 60% 70% at 20% 50%, #D4EDFF 0%, transparent 65%),
+      var(--white);
+  }
+  .appt-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+  .appt-info h2 { margin-bottom: 0.75rem; }
+  .appt-info p { font-size: 0.95rem; color: var(--muted); line-height: 1.7; font-weight: 300; margin-bottom: 2rem; }
+  .info-chips { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 2rem; }
+  .chip {
+    display: flex; align-items: center; gap: 0.4rem;
+    background: var(--ice);
+    color: var(--blue);
+    font-size: 0.8rem;
+    font-weight: 500;
+    padding: 0.4rem 0.85rem;
+    border-radius: 100px;
+  }
+  .appt-form {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 2.5rem;
+    box-shadow: 0 2px 4px rgba(11,31,58,0.04), 0 16px 48px rgba(26,86,168,0.1);
+  }
+  .form-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.3rem;
+    color: var(--navy);
+    margin-bottom: 1.75rem;
+  }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .field { margin-bottom: 1rem; }
+  .field label {
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--navy);
+    margin-bottom: 0.4rem;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+  .field input,
+  .field select,
+  .field textarea {
+    width: 100%;
+    background: var(--gray);
+    border: 1.5px solid transparent;
+    border-radius: 10px;
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+    font-family: 'DM Sans', sans-serif;
+    color: var(--text);
+    outline: none;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .field input:focus,
+  .field select:focus,
+  .field textarea:focus {
+    border-color: var(--blue);
+    background: var(--white);
+  }
+  .field textarea { resize: vertical; min-height: 80px; }
+  .field select { appearance: none; cursor: pointer; }
+  .submit-btn {
+    width: 100%;
+    background: var(--blue);
+    color: var(--white);
+    border: none;
+    border-radius: 100px;
+    padding: 1rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    font-family: 'DM Sans', sans-serif;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    margin-top: 0.5rem;
+  }
+  .submit-btn:hover { background: var(--navy); transform: translateY(-1px); }
+  .success-msg {
+    display: none;
+    text-align: center;
+    padding: 1.5rem;
+    background: #e8f8f0;
+    border-radius: 12px;
+    color: #166534;
+    font-weight: 500;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+  }
+
+  /* ── LOCATION ── */
+  #location { background: var(--gray); }
+  .location-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 3rem;
+    align-items: start;
+  }
+  .location-info h2 { margin-bottom: 0.5rem; }
+  .location-info p { font-size: 0.95rem; color: var(--muted); font-weight: 300; margin-bottom: 2rem; }
+  .info-block { display: flex; flex-direction: column; gap: 1.25rem; }
+  .info-item { display: flex; gap: 1rem; align-items: flex-start; }
+  .info-icon {
+    width: 40px; height: 40px; border-radius: 10px;
+    background: var(--ice);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+  .info-text-label { font-size: 0.75rem; font-weight: 500; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; }
+  .info-text-val { font-size: 0.92rem; color: var(--navy); margin-top: 0.1rem; line-height: 1.5; }
+  .map-embed {
+    border-radius: var(--radius);
+    overflow: hidden;
+    height: 380px;
+    background: var(--ice);
+    display: flex; align-items: center; justify-content: center;
+    border: 1px solid rgba(11,31,58,0.08);
+    position: relative;
+  }
+  .map-placeholder {
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.88rem;
+  }
+  .map-placeholder .map-icon { font-size: 2.5rem; display: block; margin-bottom: 0.75rem; }
+  .map-embed iframe {
+    width: 100%; height: 100%; border: none;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy);
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+    padding: 2.5rem 5vw;
+    font-size: 0.83rem;
+  }
+  footer a { color: rgba(255,255,255,0.6); text-decoration: none; }
+  footer strong { color: var(--white); font-weight: 500; }
+  .footer-top {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap; gap: 1rem;
+  }
+  .footer-logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.2rem;
+    color: var(--white);
+    text-decoration: none;
+  }
+  .footer-logo span { color: #7EB8F7; }
+  .footer-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+  .footer-links a { font-size: 0.82rem; }
+  .footer-divider { border: none; border-top: 1px solid rgba(255,255,255,0.08); margin-bottom: 1.5rem; }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .fade-up {
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards;
+  }
+  .fade-up:nth-child(1) { animation-delay: 0.05s; }
+  .fade-up:nth-child(2) { animation-delay: 0.15s; }
+  .fade-up:nth-child(3) { animation-delay: 0.25s; }
+  .fade-up:nth-child(4) { animation-delay: 0.35s; }
+  .fade-up:nth-child(5) { animation-delay: 0.45s; }
+  .fade-up:nth-child(6) { animation-delay: 0.55s; }
+
+  /* ── MOBILE ── */
+  @media (max-width: 768px) {
+    #home { grid-template-columns: 1fr; padding: 8rem 6vw 4rem; text-align: center; }
+    .hero-btns { justify-content: center; }
+    .hero-stats { justify-content: center; }
+    .hero-visual { display: none; }
+    #doctor { grid-template-columns: 1fr; }
+    .doctor-photo-wrap { display: block; }
+    .appt-grid { grid-template-columns: 1fr; }
+    .location-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .footer-top { flex-direction: column; align-items: flex-start; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#home" class="logo">House<span>Of</span>Teeth</a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#doctor">Our Doctor</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#location">Find Us</a></li>
+    <li><a href="#appointment" class="nav-cta">Book Now</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-content">
+    <div class="hero-label">Trusted Dental Care · Bengaluru</div>
+    <h1>Your smile,<br><em>perfected.</em></h1>
+    <p class="hero-sub">Comprehensive dental care delivered with precision and warmth — from routine cleanings to full smile transformations.</p>
+    <div class="hero-btns">
+      <a href="#appointment" class="btn-primary">Book an Appointment</a>
+      <a href="#services" class="btn-outline">Explore Services</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">2000+</div>
+        <div class="stat-label">Happy Patients</div>
+      </div>
+      <div>
+        <div class="stat-num">10+</div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div>
+        <div class="stat-num">4.9★</div>
+        <div class="stat-label">Google Rating</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="hero-card">
+      <div class="badge-float">⚡ Next slot: Today 4 PM</div>
+      <div class="card-tooth">🦷</div>
+      <div class="card-title">Book Your Visit</div>
+      <div class="card-sub">Choose a convenient slot</div>
+      <div class="card-slots">
+        <div class="slot"><span class="slot-time">10:00 AM</span><span class="slot-taken">Booked</span></div>
+        <div class="slot"><span class="slot-time">12:00 PM</span><span class="slot-taken">Booked</span></div>
+        <div class="slot" style="background:#f0fdf4;"><span class="slot-time">4:00 PM</span><span class="slot-avail">● Available</span></div>
+        <div class="slot" style="background:#f0fdf4;"><span class="slot-time">6:00 PM</span><span class="slot-avail">● Available</span></div>
+      </div>
+      <button class="card-btn" onclick="document.getElementById('appointment').scrollIntoView({behavior:'smooth'})">Reserve a Slot →</button>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-label">What We Do</div>
+  <h2>Complete dental care<br>under one roof</h2>
+  <p class="section-intro">From your first check-up to your dream smile, we offer the full spectrum of modern dentistry.</p>
+  <div class="services-grid">
+    <div class="service-card fade-up">
+      <div class="service-icon">🔍</div>
+      <div class="service-title">Examination & Cleaning</div>
+      <p class="service-desc">Thorough check-ups, X-rays, and professional scaling to keep your teeth healthy and bright.</p>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon">🔧</div>
+      <div class="service-title">Fillings & Restorations</div>
+      <p class="service-desc">Tooth-coloured composite fillings that restore strength while looking completely natural.</p>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon">✂️</div>
+      <div class="service-title">Extractions</div>
+      <p class="service-desc">Painless simple and surgical extractions, including wisdom tooth removal, with expert post-care.</p>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon">✨</div>
+      <div class="service-title">Teeth Whitening</div>
+      <p class="service-desc">In-clinic and take-home whitening treatments for a noticeably brighter smile in one session.</p>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon">💎</div>
+      <div class="service-title">Veneers & Smile Makeover</div>
+      <p class="service-desc">Porcelain veneers, bonding, and full-smile redesign for the confidence you deserve.</p>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon">📐</div>
+      <div class="service-title">Braces & Clear Aligners</div>
+      <p class="service-desc">Metal braces, ceramic braces, and removable clear aligners to straighten teeth at any age.</p>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon">🛡️</div>
+      <div class="service-title">Root Canal Treatment</div>
+      <p class="service-desc">Pain-free RCT using rotary instruments — save your natural tooth instead of extracting it.</p>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon">👑</div>
+      <div class="service-title">Crowns & Bridges</div>
+      <p class="service-desc">Zirconia and ceramic crowns that look, feel, and function just like your real teeth.</p>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon">🦴</div>
+      <div class="service-title">Dental Implants</div>
+      <p class="service-desc">Permanent titanium implants that replace missing teeth with a natural look and lifetime durability.</p>
+    </div>
+  </div>
+</section>
+
+<!-- DOCTOR -->
+<section id="doctor" style="padding: 6rem 8vw;">
+  <div class="doctor-photo-wrap">
+    <div class="doctor-photo"><img src="C:\Users\Lenovo\Downloads\1.png"></div>
+    <div class="doctor-badge">
+      <strong>Dr. [Your Name]</strong>
+      <span>BDS · MDS – Prosthodontics</span>
+    </div>
+  </div>
+  <div class="doctor-content">
+    <div class="section-label">Meet the Doctor</div>
+    <h2>Experienced care you can trust</h2>
+    <div class="doctor-role">Lead Dentist & Founder, House Of Teeth</div>
+    <p class="doctor-bio">
+      With over a decade of practice, Dr. [Name] brings together clinical precision and a compassionate approach to make every patient feel at ease. Trained at a premier dental institution and with a specialisation in Prosthodontics, the focus has always been on long-lasting, aesthetically excellent outcomes.
+    </p>
+    <ul class="quals">
+      <li>BDS – Rajiv Gandhi University of Health Sciences</li>
+      <li>MDS – Prosthodontics & Crown & Bridge</li>
+      <li>Member, Indian Dental Association (IDA)</li>
+      <li>10+ years of clinical experience in Bengaluru</li>
+      <li>Certified in Invisalign & Clear Aligner therapy</li>
+    </ul>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews">
+  <div class="section-label">Patient Stories</div>
+  <h2>What our patients say</h2>
+  <p class="section-intro">Real experiences from real patients — see why Bengaluru trusts House Of Teeth.</p>
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p class="review-text">"Absolutely painless root canal — I was genuinely surprised. The doctor explained every step, and the clinic is spotlessly clean. Won't go anywhere else!"</p>
+      <div class="reviewer">
+        <div class="reviewer-avatar">RK</div>
+        <div>
+          <div class="reviewer-name">Rahul K.</div>
+          <div class="reviewer-via">Google Review</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p class="review-text">"Got my smile makeover done here and the results are beyond what I imagined. The veneers look so natural. The team is warm, professional, and super welcoming."</p>
+      <div class="reviewer">
+        <div class="reviewer-avatar">PA</div>
+        <div>
+          <div class="reviewer-name">Priya A.</div>
+          <div class="reviewer-via">Google Review</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p class="review-text">"My daughter was terrified of the dentist. Dr. [Name] was so patient and gentle — she actually looks forward to her appointments now. Highly recommend for families."</p>
+      <div class="reviewer">
+        <div class="reviewer-avatar">SM</div>
+        <div>
+          <div class="reviewer-name">Sunita M.</div>
+          <div class="reviewer-via">Google Review</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p class="review-text">"Best orthodontic consultation I've had in Bengaluru. Clear explanation of Invisalign options, realistic timelines, and transparent pricing. Mid-treatment and loving the results!"</p>
+      <div class="reviewer">
+        <div class="reviewer-avatar">VT</div>
+        <div>
+          <div class="reviewer-name">Vivek T.</div>
+          <div class="reviewer-via">Google Review</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p class="review-text">"Had a dental implant placed and the entire process was seamless. No pain, no swelling, and the crown looks identical to my natural tooth. Outstanding work."</p>
+      <div class="reviewer">
+        <div class="reviewer-avatar">AN</div>
+        <div>
+          <div class="reviewer-name">Ananya N.</div>
+          <div class="reviewer-via">Google Review</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p class="review-text">"Easy online booking, zero waiting time, and the teeth whitening results were visible from the very first session. The clinic genuinely cares about your experience."</p>
+      <div class="reviewer">
+        <div class="reviewer-avatar">KR</div>
+        <div>
+          <div class="reviewer-name">Karthik R.</div>
+          <div class="reviewer-via">Google Review</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <a href="https://g.page/r/CbQrucQsPvt4EBM" target="_blank" class="google-badge">
+    🌐 &nbsp;View all reviews on Google Maps →
+  </a>
+</section>
+
+<!-- APPOINTMENT -->
+<section id="appointment">
+  <div class="appt-grid">
+    <div class="appt-info">
+      <div class="section-label">Book a Visit</div>
+      <h2>Ready for a healthier smile?</h2>
+      <p>Fill in the form and we'll confirm your appointment within 2 hours. Walk-ins also welcome during clinic hours.</p>
+      <div class="info-chips">
+        <span class="chip">⏱ Quick confirmation</span>
+        <span class="chip">📅 Mon – Sat open</span>
+        <span class="chip">💳 All payments accepted</span>
+      </div>
+      <p style="font-size:0.88rem; color:var(--muted);">Prefer to call? <strong style="color:var(--navy);">📞 +91 98765 43210</strong></p>
+    </div>
+    <div class="appt-form">
+      <div class="form-title">Book Your Appointment</div>
+      <div class="form-row">
+        <div class="field">
+          <label>First Name</label>
+          <input type="text" placeholder="Rahul" id="fname">
+        </div>
+        <div class="field">
+          <label>Last Name</label>
+          <input type="text" placeholder="Kumar" id="lname">
+        </div>
+      </div>
+      <div class="field">
+        <label>Phone Number</label>
+        <input type="tel" placeholder="+91 98765 43210" id="phone">
+      </div>
+      <div class="field">
+        <label>Service Needed</label>
+        <select id="service">
+          <option value="">Select a service…</option>
+          <option>Examination & Cleaning</option>
+          <option>Teeth Whitening</option>
+          <option>Fillings / Restoration</option>
+          <option>Root Canal Treatment</option>
+          <option>Braces / Clear Aligners</option>
+          <option>Veneers / Smile Makeover</option>
+          <option>Dental Implants</option>
+          <option>Extraction</option>
+          <option>Crowns & Bridges</option>
+          <option>Other / Not Sure</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <div class="field">
+          <label>Preferred Date</label>
+          <input type="date" id="appt-date">
+        </div>
+        <div class="field">
+          <label>Preferred Time</label>
+          <select id="appt-time">
+            <option value="">Select…</option>
+            <option>10:00 AM</option>
+            <option>11:00 AM</option>
+            <option>12:00 PM</option>
+            <option>2:00 PM</option>
+            <option>4:00 PM</option>
+            <option>5:00 PM</option>
+            <option>6:00 PM</option>
+          </select>
+        </div>
+      </div>
+      <div class="field">
+        <label>Notes (optional)</label>
+        <textarea placeholder="Any concerns, ongoing medications, or specific requests…" id="notes"></textarea>
+      </div>
+      <button class="submit-btn" onclick="submitForm()">Request Appointment →</button>
+      <div class="success-msg" id="success-msg">
+        ✅ Thank you! We've received your request and will confirm within 2 hours.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section id="location">
+  <div class="section-label">Find Us</div>
+  <h2>We're easy to reach</h2>
+  <p class="section-intro" style="margin-bottom:2.5rem;">Conveniently located in Bengaluru with ample parking and public transport access.</p>
+  <div class="location-grid">
+    <div class="location-info">
+      <div class="info-block">
+        <div class="info-item">
+          <div class="info-icon">📍</div>
+          <div>
+            <div class="info-text-label">Address</div>
+            <div class="info-text-val">1st floor, 93, Hosur Rd,<br> Srinivasa Nagar, Singasandra,<br>Bengaluru, Karnataka – 560068</div>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">🕐</div>
+          <div>
+            <div class="info-text-label">Clinic Hours</div>
+            <div class="info-text-val">
+              Mon – Fri: 10:00 AM – 7:00 PM<br>
+              Saturday: 10:00 AM – 5:00 PM<br>
+              Sunday: Closed
+            </div>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">📞</div>
+          <div>
+            <div class="info-text-label">Phone</div>
+            <div class="info-text-val">+91 98765 43210</div>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">✉️</div>
+          <div>
+            <div class="info-text-label">Email</div>
+            <div class="info-text-val">hello@houseofteeth.in</div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    <div class="map-embed">
+      <!-- Replace the src below with your actual Google Maps embed URL -->
+      <!-- To get it: maps.google.com → search your clinic → Share → Embed a map → copy the src URL -->
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3889.3550703829924!2d77.64038821170878!3d12.88487498737011!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4d08f5a1da6d364f%3A0x78fb3e2cc4b92bb4!2sHouse%20of%20Teeth%20-%20The%20Dental%20Clinic!5e0!3m2!1sen!2sin!4v1780125661915!5m2!1sen!2sin" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <a href="#home" class="footer-logo">House<span>Of</span>Teeth</a>
+    <div class="footer-links">
+      <a href="#services">Services</a>
+      <a href="#doctor">Doctor</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#appointment">Book Now</a>
+      <a href="#location">Find Us</a>
+    </div>
+  </div>
+  <hr class="footer-divider">
+  <p>© 2026 <strong>House Of Teeth Dental Clinic</strong>. All rights reserved.</p>
+</footer>
+
+<!-- EmailJS SDK -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<script>
+  // ─────────────────────────────────────────────────────────────
+  //  EMAILJS CONFIGURATION — fill these in after signing up at
+  //  https://www.emailjs.com  (free plan: 200 emails/month)
+  // ─────────────────────────────────────────────────────────────
+  const EMAILJS_PUBLIC_KEY   = 'YOUR_PUBLIC_KEY';      // Account → API Keys
+  const EMAILJS_SERVICE_ID   = 'YOUR_SERVICE_ID';      // Email Services → Service ID
+  const EMAILJS_TEMPLATE_ID  = 'YOUR_TEMPLATE_ID';     // Email Templates → Template ID
+  const CLINIC_EMAIL         = 'hello@houseofteeth.in';// ← your notification email
+
+  emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+
+  // ── Min date: today ──
+  const dateInput = document.getElementById('appt-date');
+  if (dateInput) {
+    dateInput.min = new Date().toISOString().split('T')[0];
+  }
+
+  // ── Form validation helpers ──
+  function showFieldError(id, msg) {
+    const el = document.getElementById(id);
+    el.style.borderColor = '#ef4444';
+    let err = el.parentElement.querySelector('.field-err');
+    if (!err) {
+      err = document.createElement('span');
+      err.className = 'field-err';
+      err.style.cssText = 'color:#ef4444;font-size:0.75rem;margin-top:4px;display:block;';
+      el.parentElement.appendChild(err);
+    }
+    err.textContent = msg;
+  }
+
+  function clearFieldErrors() {
+    document.querySelectorAll('.field input, .field select, .field textarea').forEach(el => {
+      el.style.borderColor = '';
+    });
+    document.querySelectorAll('.field-err').forEach(el => el.remove());
+  }
+
+  function validatePhone(p) { return /^[+\d\s\-()]{7,15}$/.test(p); }
+
+  // ── Main submit function ──
+  async function submitForm() {
+    clearFieldErrors();
+
+    const fname   = document.getElementById('fname').value.trim();
+    const lname   = document.getElementById('lname').value.trim();
+    const phone   = document.getElementById('phone').value.trim();
+    const service = document.getElementById('service').value;
+    const date    = document.getElementById('appt-date').value;
+    const time    = document.getElementById('appt-time').value;
+    const notes   = document.getElementById('notes').value.trim();
+
+    // Validation
+    let valid = true;
+    if (!fname)              { showFieldError('fname',    'First name is required.');       valid = false; }
+    if (!phone)              { showFieldError('phone',    'Phone number is required.');     valid = false; }
+    else if (!validatePhone(phone)) { showFieldError('phone', 'Enter a valid phone number.'); valid = false; }
+    if (!service)            { showFieldError('service',  'Please select a service.');      valid = false; }
+    if (!date)               { showFieldError('appt-date','Please choose a date.');         valid = false; }
+    if (!time)               { showFieldError('appt-time','Please choose a time.');         valid = false; }
+    if (!valid) return;
+
+    const btn = document.querySelector('.submit-btn');
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+
+    const fullName    = `${fname} ${lname}`.trim();
+    const sentAt      = new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' });
+    const formattedDate = new Date(date).toLocaleDateString('en-IN', { weekday:'long', year:'numeric', month:'long', day:'numeric' });
+
+    // Template variables — these must match your EmailJS template placeholders
+    const templateParams = {
+      to_email:      CLINIC_EMAIL,
+      patient_name:  fullName,
+      patient_phone: phone,
+      service:       service,
+      appt_date:     formattedDate,
+      appt_time:     time,
+      notes:         notes || 'None',
+      submitted_at:  sentAt,
+      reply_to:      phone,   // EmailJS reply-to field
+    };
+
+    try {
+      await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams);
+      // Success state
+      btn.textContent = 'Request Sent ✓';
+      btn.style.background = '#22c55e';
+      document.getElementById('success-msg').style.display = 'block';
+      document.getElementById('success-msg').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      // Clear form fields
+      ['fname','lname','phone','notes'].forEach(id => document.getElementById(id).value = '');
+      ['service','appt-date','appt-time'].forEach(id => document.getElementById(id).value = '');
+    } catch (err) {
+      // Error state — show inline message, re-enable button
+      btn.disabled = false;
+      btn.textContent = 'Request Appointment →';
+      const errBox = document.getElementById('success-msg');
+      errBox.style.display = 'block';
+      errBox.style.background = '#fef2f2';
+      errBox.style.color = '#991b1b';
+      errBox.textContent = '⚠️ Something went wrong. Please call us directly at +91 98765 43210.';
+      console.error('EmailJS error:', err);
+    }
+  }
+
+  // ── Scroll-triggered fade-in for service cards ──
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+        e.target.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.service-card').forEach((card, i) => {
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(20px)';
+    card.style.transitionDelay = `${i * 0.06}s`;
+    observer.observe(card);
+  });
+</script>
+</body>
+</html>
