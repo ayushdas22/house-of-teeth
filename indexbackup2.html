@@ -125,7 +125,10 @@
     margin-bottom: 1.25rem;
     letter-spacing: -0.02em;
   }
-  h1 em { font-style: italic; color: var(--blue); }
+  h1 em {
+    font-style: italic;
+    color: var(--blue);
+  }
   .hero-sub {
     font-size: 1.05rem;
     color: var(--muted);
@@ -161,14 +164,22 @@
   }
   .btn-outline:hover { border-color: var(--blue); color: var(--blue); transform: translateY(-1px); }
 
-  .hero-stats { display: flex; gap: 2.5rem; margin-top: 3rem; }
+  .hero-stats {
+    display: flex; gap: 2.5rem;
+    margin-top: 3rem;
+  }
   .stat-num {
     font-family: 'DM Serif Display', serif;
     font-size: 2rem;
     color: var(--navy);
     line-height: 1;
   }
-  .stat-label { font-size: 0.78rem; color: var(--muted); margin-top: 0.25rem; font-weight: 300; }
+  .stat-label {
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-top: 0.25rem;
+    font-weight: 300;
+  }
 
   /* Hero visual card */
   .hero-visual {
@@ -205,7 +216,12 @@
     font-size: 2rem;
     margin-bottom: 1.25rem;
   }
-  .card-title { font-family: 'DM Serif Display', serif; font-size: 1.2rem; color: var(--navy); margin-bottom: 0.3rem; }
+  .card-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.2rem;
+    color: var(--navy);
+    margin-bottom: 0.3rem;
+  }
   .card-sub { font-size: 0.83rem; color: var(--muted); margin-bottom: 1.5rem; }
   .card-slots { display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 1.5rem; }
   .slot {
@@ -289,7 +305,10 @@
     transition: box-shadow 0.25s, transform 0.2s;
     cursor: default;
   }
-  .service-card:hover { box-shadow: 0 8px 32px rgba(26,86,168,0.12); transform: translateY(-3px); }
+  .service-card:hover {
+    box-shadow: 0 8px 32px rgba(26,86,168,0.12);
+    transform: translateY(-3px);
+  }
   .service-icon {
     width: 52px; height: 52px;
     background: var(--ice);
@@ -298,12 +317,25 @@
     font-size: 1.5rem;
     margin-bottom: 1.25rem;
   }
-  .service-title { font-family: 'DM Serif Display', serif; font-size: 1.1rem; color: var(--navy); margin-bottom: 0.5rem; }
+  .service-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.1rem;
+    color: var(--navy);
+    margin-bottom: 0.5rem;
+  }
   .service-desc { font-size: 0.88rem; color: var(--muted); line-height: 1.65; }
 
   /* ── DOCTOR ── */
-  #doctor { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 5rem; }
-  .doctor-photo-wrap { position: relative; }
+  /* FIX 3: Grid styles on #doctor, no inline padding override needed */
+  #doctor {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 5rem;
+  }
+  .doctor-photo-wrap {
+    position: relative;
+  }
   .doctor-photo {
     width: min(100%, 420px);
     aspect-ratio: 1 / 1;
@@ -314,8 +346,19 @@
     overflow: hidden;
     position: relative;
   }
-  .doctor-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .doctor-photo::after { content: '🦷'; position: absolute; top: 1.5rem; right: 1.5rem; font-size: 1.5rem; opacity: 0.4; }
+  .doctor-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .doctor-photo::after {
+    content: '🦷';
+    position: absolute;
+    top: 1.5rem; right: 1.5rem;
+    font-size: 1.5rem;
+    opacity: 0.4;
+  }
   .doctor-badge {
     position: absolute;
     bottom: -1rem; left: -1rem;
@@ -327,11 +370,27 @@
   }
   .doctor-badge strong { display: block; color: var(--navy); font-size: 1rem; font-weight: 500; }
   .doctor-badge span { color: var(--muted); }
+
   .doctor-content h2 { margin-bottom: 0.5rem; }
-  .doctor-role { font-size: 0.95rem; color: var(--blue); font-weight: 500; margin-bottom: 1.5rem; }
-  .doctor-bio { font-size: 0.95rem; color: var(--muted); line-height: 1.75; margin-bottom: 2rem; font-weight: 300; }
+  .doctor-role {
+    font-size: 0.95rem;
+    color: var(--blue);
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+  }
+  .doctor-bio {
+    font-size: 0.95rem;
+    color: var(--muted);
+    line-height: 1.75;
+    margin-bottom: 2rem;
+    font-weight: 300;
+  }
   .quals { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
-  .quals li { display: flex; align-items: center; gap: 0.75rem; font-size: 0.88rem; color: var(--text); }
+  .quals li {
+    display: flex; align-items: center; gap: 0.75rem;
+    font-size: 0.88rem;
+    color: var(--text);
+  }
   .quals li::before {
     content: '';
     width: 20px; height: 20px;
@@ -348,7 +407,11 @@
   #reviews .section-label { color: #7EB8F7; }
   #reviews h2 { color: var(--white); }
   #reviews .section-intro { color: rgba(255,255,255,0.55); }
-  .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; }
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.25rem;
+  }
   .review-card {
     background: rgba(255,255,255,0.07);
     border: 1px solid rgba(255,255,255,0.1);
@@ -356,14 +419,24 @@
     padding: 1.75rem;
   }
   .stars { color: var(--gold); font-size: 0.85rem; letter-spacing: 0.05em; margin-bottom: 0.85rem; }
-  .review-text { font-size: 0.9rem; color: rgba(255,255,255,0.8); line-height: 1.7; margin-bottom: 1.25rem; font-style: italic; font-weight: 300; }
+  .review-text {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.8);
+    line-height: 1.7;
+    margin-bottom: 1.25rem;
+    font-style: italic;
+    font-weight: 300;
+  }
   .reviewer { display: flex; align-items: center; gap: 0.75rem; }
   .reviewer-avatar {
     width: 38px; height: 38px;
     border-radius: 50%;
     background: var(--sky);
     display: flex; align-items: center; justify-content: center;
-    font-weight: 500; font-size: 0.85rem; color: var(--white); flex-shrink: 0;
+    font-weight: 500;
+    font-size: 0.85rem;
+    color: var(--white);
+    flex-shrink: 0;
   }
   .reviewer-name { font-size: 0.88rem; font-weight: 500; color: var(--white); }
   .reviewer-via { font-size: 0.75rem; color: rgba(255,255,255,0.4); }
@@ -384,17 +457,27 @@
 
   /* ── APPOINTMENT ── */
   #appointment {
-    background: radial-gradient(ellipse 60% 70% at 20% 50%, #D4EDFF 0%, transparent 65%), var(--white);
+    background:
+      radial-gradient(ellipse 60% 70% at 20% 50%, #D4EDFF 0%, transparent 65%),
+      var(--white);
   }
-  .appt-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+  .appt-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
   .appt-info h2 { margin-bottom: 0.75rem; }
   .appt-info p { font-size: 0.95rem; color: var(--muted); line-height: 1.7; font-weight: 300; margin-bottom: 2rem; }
   .info-chips { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 2rem; }
   .chip {
     display: flex; align-items: center; gap: 0.4rem;
-    background: var(--ice); color: var(--blue);
-    font-size: 0.8rem; font-weight: 500;
-    padding: 0.4rem 0.85rem; border-radius: 100px;
+    background: var(--ice);
+    color: var(--blue);
+    font-size: 0.8rem;
+    font-weight: 500;
+    padding: 0.4rem 0.85rem;
+    border-radius: 100px;
   }
   .appt-form {
     background: var(--white);
@@ -402,62 +485,141 @@
     padding: 2.5rem;
     box-shadow: 0 2px 4px rgba(11,31,58,0.04), 0 16px 48px rgba(26,86,168,0.1);
   }
-  .form-title { font-family: 'DM Serif Display', serif; font-size: 1.3rem; color: var(--navy); margin-bottom: 1.75rem; }
+  .form-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.3rem;
+    color: var(--navy);
+    margin-bottom: 1.75rem;
+  }
   .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
   .field { margin-bottom: 1rem; }
   .field label {
-    display: block; font-size: 0.78rem; font-weight: 500; color: var(--navy);
-    margin-bottom: 0.4rem; letter-spacing: 0.02em; text-transform: uppercase;
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--navy);
+    margin-bottom: 0.4rem;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
   }
-  .field input, .field select, .field textarea {
-    width: 100%; background: var(--gray); border: 1.5px solid transparent;
-    border-radius: 10px; padding: 0.75rem 1rem; font-size: 0.9rem;
-    font-family: 'DM Sans', sans-serif; color: var(--text); outline: none;
+  .field input,
+  .field select,
+  .field textarea {
+    width: 100%;
+    background: var(--gray);
+    border: 1.5px solid transparent;
+    border-radius: 10px;
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+    font-family: 'DM Sans', sans-serif;
+    color: var(--text);
+    outline: none;
     transition: border-color 0.2s, background 0.2s;
   }
-  .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--blue); background: var(--white); }
+  .field input:focus,
+  .field select:focus,
+  .field textarea:focus {
+    border-color: var(--blue);
+    background: var(--white);
+  }
   .field textarea { resize: vertical; min-height: 80px; }
   .field select { appearance: none; cursor: pointer; }
   .submit-btn {
-    width: 100%; background: var(--blue); color: var(--white);
-    border: none; border-radius: 100px; padding: 1rem;
-    font-size: 0.95rem; font-weight: 500; font-family: 'DM Sans', sans-serif;
-    cursor: pointer; transition: background 0.2s, transform 0.15s; margin-top: 0.5rem;
+    width: 100%;
+    background: var(--blue);
+    color: var(--white);
+    border: none;
+    border-radius: 100px;
+    padding: 1rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    font-family: 'DM Sans', sans-serif;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    margin-top: 0.5rem;
   }
   .submit-btn:hover { background: var(--navy); transform: translateY(-1px); }
   .success-msg {
-    display: none; text-align: center; padding: 1.5rem;
-    background: #e8f8f0; border-radius: 12px; color: #166534;
-    font-weight: 500; margin-top: 1rem; font-size: 0.9rem;
+    display: none;
+    text-align: center;
+    padding: 1.5rem;
+    background: #e8f8f0;
+    border-radius: 12px;
+    color: #166534;
+    font-weight: 500;
+    margin-top: 1rem;
+    font-size: 0.9rem;
   }
 
   /* ── LOCATION ── */
   #location { background: var(--gray); }
-  .location-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 3rem; align-items: start; }
+  .location-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 3rem;
+    align-items: start;
+  }
   .location-info h2 { margin-bottom: 0.5rem; }
   .location-info p { font-size: 0.95rem; color: var(--muted); font-weight: 300; margin-bottom: 2rem; }
   .info-block { display: flex; flex-direction: column; gap: 1.25rem; }
   .info-item { display: flex; gap: 1rem; align-items: flex-start; }
-  .info-icon { width: 40px; height: 40px; border-radius: 10px; background: var(--ice); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; }
+  .info-icon {
+    width: 40px; height: 40px; border-radius: 10px;
+    background: var(--ice);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
   .info-text-label { font-size: 0.75rem; font-weight: 500; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; }
   .info-text-val { font-size: 0.92rem; color: var(--navy); margin-top: 0.1rem; line-height: 1.5; }
-  .map-embed { border-radius: var(--radius); overflow: hidden; height: 380px; background: var(--ice); display: flex; align-items: center; justify-content: center; border: 1px solid rgba(11,31,58,0.08); position: relative; }
-  .map-embed iframe { width: 100%; height: 100%; border: none; }
+  .map-embed {
+    border-radius: var(--radius);
+    overflow: hidden;
+    height: 380px;
+    background: var(--ice);
+    display: flex; align-items: center; justify-content: center;
+    border: 1px solid rgba(11,31,58,0.08);
+    position: relative;
+  }
+  .map-embed iframe {
+    width: 100%; height: 100%; border: none;
+  }
 
   /* ── FOOTER ── */
-  footer { background: var(--navy); color: rgba(255,255,255,0.5); text-align: center; padding: 2.5rem 5vw; font-size: 0.83rem; }
+  footer {
+    background: var(--navy);
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+    padding: 2.5rem 5vw;
+    font-size: 0.83rem;
+  }
   footer a { color: rgba(255,255,255,0.6); text-decoration: none; }
   footer strong { color: var(--white); font-weight: 500; }
-  .footer-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem; }
-  .footer-logo { font-family: 'DM Serif Display', serif; font-size: 1.2rem; color: var(--white); text-decoration: none; }
+  .footer-top {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap; gap: 1rem;
+  }
+  .footer-logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.2rem;
+    color: var(--white);
+    text-decoration: none;
+  }
   .footer-logo span { color: #7EB8F7; }
   .footer-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
   .footer-links a { font-size: 0.82rem; }
   .footer-divider { border: none; border-top: 1px solid rgba(255,255,255,0.08); margin-bottom: 1.5rem; }
 
   /* ── ANIMATIONS ── */
-  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
-  .fade-up { opacity: 0; animation: fadeUp 0.6s ease forwards; }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .fade-up {
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards;
+  }
   .fade-up:nth-child(1) { animation-delay: 0.05s; }
   .fade-up:nth-child(2) { animation-delay: 0.15s; }
   .fade-up:nth-child(3) { animation-delay: 0.25s; }
@@ -486,6 +648,7 @@
 <body>
 
 <!-- NAV -->
+<!-- FIX 1: Use single unified .logo class (removed .logo2) -->
 <nav>
   <a href="#home" class="logo">
     <svg class="logo-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -518,11 +681,21 @@
       <a href="#services" class="btn-outline">Explore Services</a>
     </div>
     <div class="hero-stats">
-      <div><div class="stat-num">2000+</div><div class="stat-label">Happy Patients</div></div>
-      <div><div class="stat-num">7+</div><div class="stat-label">Years Experience</div></div>
-      <div><div class="stat-num">4.9★</div><div class="stat-label">Google Rating</div></div>
+      <div>
+        <div class="stat-num">2000+</div>
+        <div class="stat-label">Happy Patients</div>
+      </div>
+      <div>
+        <div class="stat-num">7+</div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div>
+        <div class="stat-num">4.9★</div>
+        <div class="stat-label">Google Rating</div>
+      </div>
     </div>
   </div>
+
   <div class="hero-visual">
     <div class="hero-card">
       <div class="badge-float" id="dynamic-badge">⚡ Slots filling fast!</div>
@@ -543,19 +716,56 @@
   <h2>Complete dental care<br>under one roof</h2>
   <p class="section-intro">From your first check-up to your dream smile, we offer the full spectrum of modern dentistry.</p>
   <div class="services-grid">
-    <div class="service-card fade-up"><div class="service-icon">🔍</div><div class="service-title">Examination & Cleaning</div><p class="service-desc">Thorough check-ups, X-rays, and professional scaling to keep your teeth healthy and bright.</p></div>
-    <div class="service-card fade-up"><div class="service-icon">🔧</div><div class="service-title">Fillings & Restorations</div><p class="service-desc">Tooth-coloured composite fillings that restore strength while looking completely natural.</p></div>
-    <div class="service-card fade-up"><div class="service-icon">✂️</div><div class="service-title">Extractions</div><p class="service-desc">Painless simple and surgical extractions, including wisdom tooth removal, with expert post-care.</p></div>
-    <div class="service-card fade-up"><div class="service-icon">✨</div><div class="service-title">Teeth Whitening</div><p class="service-desc">In-clinic and take-home whitening treatments for a noticeably brighter smile in one session.</p></div>
-    <div class="service-card fade-up"><div class="service-icon">💎</div><div class="service-title">Veneers & Smile Makeover</div><p class="service-desc">Porcelain veneers, bonding, and full-smile redesign for the confidence you deserve.</p></div>
-    <div class="service-card fade-up"><div class="service-icon">📐</div><div class="service-title">Braces & Clear Aligners</div><p class="service-desc">Metal braces, ceramic braces, and removable clear aligners to straighten teeth at any age.</p></div>
-    <div class="service-card fade-up"><div class="service-icon">🛡️</div><div class="service-title">Root Canal Treatment</div><p class="service-desc">Pain-free RCT using rotary instruments — save your natural tooth instead of extracting it.</p></div>
-    <div class="service-card fade-up"><div class="service-icon">👑</div><div class="service-title">Crowns & Bridges</div><p class="service-desc">Zirconia and ceramic crowns that look, feel, and function just like your real teeth.</p></div>
-    <div class="service-card fade-up"><div class="service-icon">🦴</div><div class="service-title">Dental Implants</div><p class="service-desc">Permanent titanium implants that replace missing teeth with a natural look and lifetime durability.</p></div>
+    <div class="service-card fade-up">
+      <div class="service-icon">🔍</div>
+      <div class="service-title">Examination & Cleaning</div>
+      <p class="service-desc">Thorough check-ups, X-rays, and professional scaling to keep your teeth healthy and bright.</p>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon">🔧</div>
+      <div class="service-title">Fillings & Restorations</div>
+      <p class="service-desc">Tooth-coloured composite fillings that restore strength while looking completely natural.</p>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon">✂️</div>
+      <div class="service-title">Extractions</div>
+      <p class="service-desc">Painless simple and surgical extractions, including wisdom tooth removal, with expert post-care.</p>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon">✨</div>
+      <div class="service-title">Teeth Whitening</div>
+      <p class="service-desc">In-clinic and take-home whitening treatments for a noticeably brighter smile in one session.</p>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon">💎</div>
+      <div class="service-title">Veneers & Smile Makeover</div>
+      <p class="service-desc">Porcelain veneers, bonding, and full-smile redesign for the confidence you deserve.</p>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon">📐</div>
+      <div class="service-title">Braces & Clear Aligners</div>
+      <p class="service-desc">Metal braces, ceramic braces, and removable clear aligners to straighten teeth at any age.</p>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon">🛡️</div>
+      <div class="service-title">Root Canal Treatment</div>
+      <p class="service-desc">Pain-free RCT using rotary instruments — save your natural tooth instead of extracting it.</p>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon">👑</div>
+      <div class="service-title">Crowns & Bridges</div>
+      <p class="service-desc">Zirconia and ceramic crowns that look, feel, and function just like your real teeth.</p>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon">🦴</div>
+      <div class="service-title">Dental Implants</div>
+      <p class="service-desc">Permanent titanium implants that replace missing teeth with a natural look and lifetime durability.</p>
+    </div>
   </div>
 </section>
 
 <!-- DOCTOR -->
+<!-- FIX 3: Removed inline style="padding: 6rem 8vw;" — section rule handles it -->
 <section id="doctor">
   <div class="doctor-photo-wrap">
     <div class="doctor-photo"><img src="./image/dr_chandani.png" alt="Dr. Chandani"></div>
@@ -568,7 +778,9 @@
     <div class="section-label">Meet the Doctor</div>
     <h2>Experienced care you can trust</h2>
     <div class="doctor-role">Lead Dentist & Founder, House Of Teeth</div>
-    <p class="doctor-bio">With over a decade of practice, Dr. Chandani brings together clinical precision and a compassionate approach to make every patient feel at ease. Trained at a premier dental institution and with a specialisation in Prosthodontics, the focus has always been on long-lasting, aesthetically excellent outcomes.</p>
+    <p class="doctor-bio">
+      With over a decade of practice, Dr. Chandani brings together clinical precision and a compassionate approach to make every patient feel at ease. Trained at a premier dental institution and with a specialisation in Prosthodontics, the focus has always been on long-lasting, aesthetically excellent outcomes.
+    </p>
     <ul class="quals">
       <li>BDS – Dr. DY Patil Vidyapeet</li>
       <li>MDS – Prosthodontics & Crown & Bridge</li>
@@ -584,8 +796,11 @@
   <div class="section-label">Patient Stories</div>
   <h2>What our patients say</h2>
   <p class="section-intro">Real experiences from real patients — see why Bengaluru trusts House Of Teeth.</p>
+  
+  <!-- Google Reviews Widget -->
   <script defer async src='https://cdn.trustindex.io/loader.js?c53570073b5b122c8b26938202b'></script>
   <div class="trustindex-widget" data-businessplace="CbQrucQsPvt4EBM"></div>
+  
   <a href="https://g.page/r/CbQrucQsPvt4EBM" target="_blank" class="google-badge">
     🌐 &nbsp;View all reviews on Google Maps →
   </a>
@@ -608,10 +823,19 @@
     <div class="appt-form">
       <div class="form-title">Book Your Appointment</div>
       <div class="form-row">
-        <div class="field"><label>First Name</label><input type="text" placeholder="Rahul" id="fname"></div>
-        <div class="field"><label>Last Name</label><input type="text" placeholder="Kumar" id="lname"></div>
+        <div class="field">
+          <label>First Name</label>
+          <input type="text" placeholder="Rahul" id="fname">
+        </div>
+        <div class="field">
+          <label>Last Name</label>
+          <input type="text" placeholder="Kumar" id="lname">
+        </div>
       </div>
-      <div class="field"><label>Phone Number</label><input type="tel" placeholder="+91 8105189978" id="phone"></div>
+      <div class="field">
+        <label>Phone Number</label>
+        <input type="tel" placeholder="+91 8105189978" id="phone">
+      </div>
       <div class="field">
         <label>Service Needed</label>
         <select id="service">
@@ -629,13 +853,21 @@
         </select>
       </div>
       <div class="form-row">
-        <div class="field"><label>Preferred Date</label><input type="date" id="appt-date"></div>
+        <div class="field">
+          <label>Preferred Date</label>
+          <input type="date" id="appt-date">
+        </div>
         <div class="field">
           <label>Preferred Time</label>
-          <select id="appt-time" disabled><option value="">Please select a date first…</option></select>
+          <select id="appt-time" disabled>
+            <option value="">Please select a date first…</option>
+          </select>
         </div>
       </div>
-      <div class="field"><label>Notes (optional)</label><textarea placeholder="Any concerns, ongoing medications, or specific requests…" id="notes"></textarea></div>
+      <div class="field">
+        <label>Notes (optional)</label>
+        <textarea placeholder="Any concerns, ongoing medications, or specific requests…" id="notes"></textarea>
+      </div>
       <button class="submit-btn" onclick="submitForm()">Request Appointment →</button>
       <div class="success-msg" id="success-msg">
         ✅ Thank you! We've received your request and will contact you within 15 mins to confirm your appointment.
@@ -654,25 +886,42 @@
       <div class="info-block">
         <div class="info-item">
           <div class="info-icon">📍</div>
-          <div><div class="info-text-label">Address</div><div class="info-text-val">1st floor, 93, Hosur Rd,<br>Srinivasa Nagar, Singasandra,<br>Bengaluru, Karnataka – 560068</div></div>
+          <div>
+            <div class="info-text-label">Address</div>
+            <div class="info-text-val">1st floor, 93, Hosur Rd,<br> Srinivasa Nagar, Singasandra,<br>Bengaluru, Karnataka – 560068</div>
+          </div>
         </div>
         <div class="info-item">
           <div class="info-icon">🕐</div>
-          <div><div class="info-text-label">Clinic Hours</div><div class="info-text-val">Mon – Sat: 10:00 AM – 8:00 PM<br>Sunday: On Appointments</div></div>
+          <div>
+            <div class="info-text-label">Clinic Hours</div>
+            <div class="info-text-val">
+              Mon – Sat: 10:00 AM – 8:00 PM<br>
+              Sunday: On Appointments
+            </div>
+          </div>
         </div>
         <div class="info-item">
           <div class="info-icon">📞</div>
-          <div><div class="info-text-label">Phone</div><div class="info-text-val">+91 8105189978</div></div>
+          <div>
+            <div class="info-text-label">Phone</div>
+            <div class="info-text-val">+91 8105189978</div>
+          </div>
         </div>
         <div class="info-item">
           <div class="info-icon">✉️</div>
-          <div><div class="info-text-label">Email</div><div class="info-text-val">houseofteeth888@gmail.com</div></div>
+          <div>
+            <div class="info-text-label">Email</div>
+            <div class="info-text-val">houseofteeth888@gmail.com</div>
+          </div>
         </div>
         <div class="info-item">
           <div class="info-icon">💬</div>
           <div>
             <div class="info-text-label">WhatsApp</div>
-            <div class="info-text-val"><a href="https://wa.me/918105189978?text=Hi%20House%20Of%20Teeth%2C%20I%20would%20like%20to%20book%20an%20appointment." target="_blank" style="color:inherit;text-decoration:none;">+91 8105189978</a></div>
+            <div class="info-text-val">
+              <a href="https://wa.me/918105189978?text=Hi%20House%20Of%20Teeth%2C%20I%20would%20like%20to%20book%20an%20appointment." target="_blank" style="color: inherit; text-decoration: none;">+91 8105189978</a>
+            </div>
           </div>
         </div>
       </div>
@@ -703,28 +952,34 @@
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
 <script>
-  // ── CONFIGURATION ────────────────────────────────────────────────────────
-  const EMAILJS_PUBLIC_KEY  = 'QQtMe5PJiSgeA50vn';
-  const EMAILJS_SERVICE_ID  = 'service_cpux0di';
-  const EMAILJS_TEMPLATE_ID = 'template_ww58btb';
-  const CLINIC_EMAIL        = 'houseofteeth888@gmail.com';
-  const APPS_SCRIPT_URL     = "https://script.google.com/macros/s/AKfycbz6eLx-LY0fAaZ6mKf6mnXSq9S42vsOvg9qZ6HkHulOaXOTyK2uBmxLPOAIdJY6ncWq/exec";
+  const EMAILJS_PUBLIC_KEY   = 'QQtMe5PJiSgeA50vn';
+  const EMAILJS_SERVICE_ID   = 'service_cpux0di';
+  const EMAILJS_TEMPLATE_ID  = 'template_ww58btb';
+  const CLINIC_EMAIL         = 'houseofteeth888@gmail.com';
+  const APPS_SCRIPT_URL      = "https://script.google.com/macros/s/AKfycbz6eLx-LY0fAaZ6mKf6mnXSq9S42vsOvg9qZ6HkHulOaXOTyK2uBmxLPOAIdJY6ncWq/exec";
 
-  // ── GREEN API (WhatsApp Business) ────────────────────────────────────────
-  const CLINIC_WHATSAPP       = '918105189978';   // country code + number, no +
-  const GREEN_API_INSTANCE_ID = '7107638087';
-  const GREEN_API_TOKEN       = '347cd4af58124f21968e3ca161ed96d299bcaec95b9d49209b';
+  // ── WHATSAPP CONFIG (CallMeBot — free API) ──────────────────────────────
+  // SETUP STEPS (one-time, takes 2 minutes):
+  // 1. Save +34 644 60 09 57 as a contact in the CLINIC WhatsApp
+  // 2. Send this message to that contact: "I allow callmebot to send me messages"
+  // 3. You'll receive an API key back — paste it below as CALLMEBOT_API_KEY
+  // Docs: https://www.callmebot.com/blog/free-api-whatsapp-messages/
+  const CLINIC_WHATSAPP      = '918105189978';   // clinic number with country code, no +
+  const CALLMEBOT_API_KEY    = 'YOUR_API_KEY';   // ← replace after setup
 
-  const ALL_FORM_SLOTS = ["10:00 AM","11:00 AM","12:00 PM","2:00 PM","4:00 PM","5:00 PM","6:00 PM"];
-  const HERO_SLOTS     = ["10:00 AM","11:00 AM","12:00 PM","2:00 PM","4:00 PM","5:00 PM","6:00 PM"];
+  const ALL_FORM_SLOTS = ["10:00 AM", "11:00 AM", "12:00 PM", "2:00 PM", "4:00 PM", "5:00 PM", "6:00 PM"];
+  const HERO_SLOTS     = ["10:00 AM", "11:00 AM", "12:00 PM", "2:00 PM", "4:00 PM", "5:00 PM", "6:00 PM"];
 
   emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
 
-  // ── WHATSAPP NOTIFICATION via Green API ──────────────────────────────────
+  // ── WHATSAPP NOTIFICATION via CallMeBot ─────────────────────────────────
   async function sendWhatsAppNotification(fullName, phone, service, formattedDate, time, notes) {
-    const url = `https://api.green-api.com/waInstance${GREEN_API_INSTANCE_ID}/sendMessage/${GREEN_API_TOKEN}`;
+    if (CALLMEBOT_API_KEY === 'YOUR_API_KEY') {
+      console.warn('WhatsApp: CallMeBot API key not set. Skipping.');
+      return;
+    }
     const msg =
-      `🦷 *New Appointment — House Of Teeth*\n\n` +
+      `🦷 *New Appointment - House Of Teeth*\n\n` +
       `👤 *Patient:* ${fullName}\n` +
       `📞 *Phone:* ${phone}\n` +
       `🩺 *Service:* ${service}\n` +
@@ -732,45 +987,43 @@
       `🕐 *Time:* ${time}\n` +
       `📝 *Notes:* ${notes || 'None'}\n\n` +
       `⚡ Submitted at ${new Date().toLocaleTimeString('en-IN', { timeZone: 'Asia/Kolkata' })}`;
+
+    const url = `https://api.callmebot.com/whatsapp.php?phone=${CLINIC_WHATSAPP}&text=${encodeURIComponent(msg)}&apikey=${CALLMEBOT_API_KEY}`;
     try {
-      const res = await fetch(url, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          chatId: `${CLINIC_WHATSAPP}@c.us`,
-          message: msg
-        })
-      });
-      const data = await res.json();
-      console.log('✅ WhatsApp sent:', data);
+      await fetch(url, { mode: 'no-cors' });
+      console.log('WhatsApp notification sent.');
     } catch (err) {
-      console.warn('⚠️ WhatsApp notification failed (non-critical):', err);
+      console.warn('WhatsApp notification failed (non-critical):', err);
     }
   }
 
-  // ── DOM READY ─────────────────────────────────────────────────────────────
+  // FIX 5: All DOM-dependent setup inside DOMContentLoaded
   document.addEventListener('DOMContentLoaded', () => {
-
     // Set min date to today
     const dateInput = document.getElementById('appt-date');
     if (dateInput) {
       dateInput.min = new Date().toISOString().split('T')[0];
 
+      // Date change → populate time slots
       dateInput.addEventListener('change', async (e) => {
         const selectedDate = e.target.value;
         const formTimeSelect = document.getElementById('appt-time');
+
         if (!selectedDate) {
           formTimeSelect.innerHTML = '<option value="">Please select a date first…</option>';
           formTimeSelect.disabled = true;
           return;
         }
+
         formTimeSelect.innerHTML = '<option value="">Checking availability...</option>';
         formTimeSelect.disabled = true;
+
         try {
           const response = await fetch(`${APPS_SCRIPT_URL}?date=${selectedDate}`);
           const data = await response.json();
           const bookedTimes = data.booked || [];
           const availableSlots = ALL_FORM_SLOTS.filter(slot => !bookedTimes.includes(slot));
+
           if (availableSlots.length === 0) {
             formTimeSelect.innerHTML = '<option value="">Fully booked for this date</option>';
             formTimeSelect.disabled = true;
@@ -792,7 +1045,11 @@
     loadTodaySlots();
 
     // Badge rotation
-    const badgeMessages = ['⚡ Slots filling fast!', '✨ Limited availability', '🎯 Book your appointments'];
+    const badgeMessages = [
+      '⚡ Slots filling fast!',
+      '✨ Limited availability',
+      '🎯 Book your appointments'
+    ];
     let badgeIndex = 0;
     const badgeEl = document.getElementById('dynamic-badge');
     setInterval(() => {
@@ -806,7 +1063,7 @@
       }
     }, 4000);
 
-    // Scroll fade-in for service cards
+    // Scroll-triggered fade-in for service cards
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(e => {
         if (e.isIntersecting) {
@@ -816,6 +1073,7 @@
         }
       });
     }, { threshold: 0.1 });
+
     document.querySelectorAll('.service-card').forEach((card, i) => {
       card.style.opacity = '0';
       card.style.transform = 'translateY(20px)';
@@ -824,7 +1082,6 @@
     });
   });
 
-  // ── HERO SLOTS ────────────────────────────────────────────────────────────
   async function loadTodaySlots() {
     const today = new Date().toISOString().split('T')[0];
     const slotsContainer = document.getElementById('dynamic-slots');
@@ -834,7 +1091,9 @@
       renderHeroSlots(data.booked || []);
     } catch (error) {
       console.error("Error fetching slots:", error);
-      if (slotsContainer) slotsContainer.innerHTML = `<div style="font-size:0.8rem;color:#ef4444;text-align:center;">Failed to load schedule.</div>`;
+      if (slotsContainer) {
+        slotsContainer.innerHTML = `<div style="font-size:0.8rem; color:#ef4444; text-align:center;">Failed to load schedule.</div>`;
+      }
     }
   }
 
@@ -844,13 +1103,22 @@
     slotsContainer.innerHTML = '';
     HERO_SLOTS.forEach(slotTime => {
       const isBooked = bookedTimes.includes(slotTime);
-      slotsContainer.innerHTML += isBooked
-        ? `<div class="slot"><span class="slot-time">${slotTime}</span><span class="slot-taken">Booked</span></div>`
-        : `<div class="slot" style="background:#f0fdf4;"><span class="slot-time">${slotTime}</span><span class="slot-avail">● Available</span></div>`;
+      if (isBooked) {
+        slotsContainer.innerHTML += `
+          <div class="slot">
+            <span class="slot-time">${slotTime}</span>
+            <span class="slot-taken">Booked</span>
+          </div>`;
+      } else {
+        slotsContainer.innerHTML += `
+          <div class="slot" style="background:#f0fdf4;">
+            <span class="slot-time">${slotTime}</span>
+            <span class="slot-avail">● Available</span>
+          </div>`;
+      }
     });
   }
 
-  // ── FORM HELPERS ──────────────────────────────────────────────────────────
   function showFieldError(id, msg) {
     const el = document.getElementById(id);
     el.style.borderColor = '#ef4444';
@@ -865,13 +1133,14 @@
   }
 
   function clearFieldErrors() {
-    document.querySelectorAll('.field input,.field select,.field textarea').forEach(el => el.style.borderColor = '');
+    document.querySelectorAll('.field input, .field select, .field textarea').forEach(el => {
+      el.style.borderColor = '';
+    });
     document.querySelectorAll('.field-err').forEach(el => el.remove());
   }
 
   function validatePhone(p) { return /^[+\d\s\-()]{7,15}$/.test(p); }
 
-  // ── SUBMIT FORM ───────────────────────────────────────────────────────────
   async function submitForm() {
     clearFieldErrors();
 
@@ -884,12 +1153,12 @@
     const notes   = document.getElementById('notes').value.trim();
 
     let valid = true;
-    if (!fname)                     { showFieldError('fname',    'First name is required.');     valid = false; }
-    if (!phone)                     { showFieldError('phone',    'Phone number is required.');   valid = false; }
-    else if (!validatePhone(phone)) { showFieldError('phone',    'Enter a valid phone number.'); valid = false; }
-    if (!service)                   { showFieldError('service',  'Please select a service.');    valid = false; }
-    if (!date)                      { showFieldError('appt-date','Please choose a date.');       valid = false; }
-    if (!time)                      { showFieldError('appt-time','Please choose a time.');       valid = false; }
+    if (!fname)                     { showFieldError('fname',    'First name is required.');       valid = false; }
+    if (!phone)                     { showFieldError('phone',    'Phone number is required.');     valid = false; }
+    else if (!validatePhone(phone)) { showFieldError('phone',    'Enter a valid phone number.');   valid = false; }
+    if (!service)                   { showFieldError('service',  'Please select a service.');      valid = false; }
+    if (!date)                      { showFieldError('appt-date','Please choose a date.');         valid = false; }
+    if (!time)                      { showFieldError('appt-time','Please choose a time.');         valid = false; }
     if (!valid) return;
 
     const btn = document.querySelector('.submit-btn');
@@ -913,7 +1182,6 @@
     };
 
     try {
-      // Step 1: Save to Google Sheets
       await fetch(APPS_SCRIPT_URL, {
         method: 'POST',
         mode: 'no-cors',
@@ -921,26 +1189,24 @@
         body: JSON.stringify({ date, time, fname, lname, phone, service, notes })
       });
 
-      // Step 2: Email + WhatsApp fire together (both non-critical)
+      // ── Email + WhatsApp fire together (both non-critical) ──
       await Promise.allSettled([
         emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
           .catch(e => console.warn('EmailJS failed (non-critical):', e)),
         sendWhatsAppNotification(fullName, phone, service, formattedDate, time, notes)
       ]);
 
-      // Step 3: Refresh hero slots if booking is for today
       const today = new Date().toISOString().split('T')[0];
       if (date === today) loadTodaySlots();
 
-      // Success UI
       btn.textContent = 'Request Sent ✓';
       btn.style.background = '#22c55e';
       document.getElementById('success-msg').style.display = 'block';
       document.getElementById('success-msg').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 
-      // Clear form
       ['fname','lname','phone','notes'].forEach(id => document.getElementById(id).value = '');
       ['service','appt-date','appt-time'].forEach(id => document.getElementById(id).value = '');
+
       const formTimeSelect = document.getElementById('appt-time');
       formTimeSelect.innerHTML = '<option value="">Please select a date first…</option>';
       formTimeSelect.disabled = true;
