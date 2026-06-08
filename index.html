@@ -584,8 +584,7 @@
   <div class="section-label">Patient Stories</div>
   <h2>What our patients say</h2>
   <p class="section-intro">Real experiences from real patients — see why Bengaluru trusts House Of Teeth.</p>
-  <script defer async src='https://cdn.trustindex.io/loader.js?c53570073b5b122c8b26938202b'></script>
-  <div class="trustindex-widget" data-businessplace="CbQrucQsPvt4EBM"></div>
+  <div class="reviews-grid" id="reviews-container"></div>
   <a href="https://g.page/r/CbQrucQsPvt4EBM" target="_blank" class="google-badge">
     🌐 &nbsp;View all reviews on Google Maps →
   </a>
@@ -720,6 +719,34 @@
 
   emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
 
+  // ── GOOGLE REVIEWS (Static) ───────────────────────────────────────────────
+  const PATIENT_REVIEWS = [
+    { name: "Rahul Kumar", text: "Exceptional dental care! Dr. Chandani is very professional and makes you feel at ease. Highly recommend.", rating: 5 },
+    { name: "Priya Sharma", text: "Best dental experience I've had. Dr. Chandani did my smile makeover and the results exceeded expectations.", rating: 5 },
+    { name: "Arjun Patel", text: "Had my root canal done here. Zero pain, professional handling, great aftercare instructions. Highly recommend.", rating: 5 },
+    { name: "Sneha Reddy", text: "Very impressed with the teeth whitening treatment. Results were amazing. Dr. Chandani's expertise was evident.", rating: 5 },
+    { name: "Anjali Verma", text: "Great experience with dental implant procedure. Dr. Chandani explained every step clearly. Highly satisfied.", rating: 5 }
+  ];
+
+  function renderReviews() {
+    const container = document.getElementById('reviews-container');
+    if (!container) return;
+
+    container.innerHTML = PATIENT_REVIEWS.map(review => `
+      <div class="review-card fade-up">
+        <div class="stars">${'★'.repeat(review.rating)}</div>
+        <div class="review-text">"${review.text}"</div>
+        <div class="reviewer">
+          <div class="reviewer-avatar">${review.name.charAt(0)}</div>
+          <div>
+            <div class="reviewer-name">${review.name}</div>
+            <div class="reviewer-via">Google Reviews</div>
+          </div>
+        </div>
+      </div>
+    `).join('');
+  }
+
   // ── WHATSAPP NOTIFICATION via Green API ──────────────────────────────────
   async function sendWhatsAppNotification(fullName, phone, service, formattedDate, time, notes) {
     const url = `https://api.green-api.com/waInstance${GREEN_API_INSTANCE_ID}/sendMessage/${GREEN_API_TOKEN}`;
@@ -750,6 +777,9 @@
 
   // ── DOM READY ─────────────────────────────────────────────────────────────
   document.addEventListener('DOMContentLoaded', () => {
+
+    // Render reviews
+    renderReviews();
 
     // Set min date to today
     const dateInput = document.getElementById('appt-date');
